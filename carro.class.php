@@ -3,8 +3,10 @@
  class Carro{
     private $ligado, $vAtual, $vMax, $msg;
 
-    public function __construct(){
-        
+    public function __construct($vm){
+        $this->setLigado(false);
+        $this->setvAtual(0);
+        $this->setvMax($vm);
     }
 
     public function setLigado($l){
