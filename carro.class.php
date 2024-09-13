@@ -34,6 +34,18 @@
     public function getmsg(){
         return $this->msg;
     }
+
+      public function acelerar($vel){
+        if($this->getLigado()==true):
+            if($this->getvAtual()+ $vel < $this->getvMax());
+                $this->setvAtual($this->getvAtual()+ $vel);
+            else:
+                $this->setvAtual($this->getvMax());
+                $this->setMsg('O carro atingiu a velocidade máxima.');
+        endif;
+    else:
+         $this->setMsg('O carro está desligado.');
+    }
 }
  
  ?>
