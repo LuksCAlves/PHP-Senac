@@ -37,16 +37,32 @@
     }
     //Métodos específicos
     public function acelerar($vel){
-        if($this->getLigado()==true):
-            if($this->getvAtual()+ $vel < $this->getvMax()):
-                $this->setvAtual($this->getvAtual()+ $vel);
-
-            else:
+        //if($this->getLigado()==true){
+            //$this ->getMsg('O carro está ligado');
+            if($this->getvAtual()+$vel <= $this->getvMax()){
+                $this->setvAtual($this->getvAtual()+$vel);
+            } else {
                 $this->setvAtual($this->getvMax());
-                $this->setMsg('O carro atingiu a velocidade máxima.');
-        endif;
-    else:
-             $this->setMsg('O carro está desligado.');
+                $this->setMsg('O carro chegou no limite de velocidade');
+            }
+    }
+
+    /* Código Gemini
+    public function acelerar($vel){
+        if($this->getLigado()){
+            $this->setvAtual(min($this->getvAtual(), $this->getvAtual() + $vel, values: $this->getvMax()));
+            if ($this->getvAtual() == $this->getvMax()) {
+                $this->setMsg('O carro chegou no limite de velocidade');
+            }
+        } else {
+            $this->setMsg('O carro não está ligado');
+        }
+    }*/
+    public function carroLigado ($on){
+        if ($this->getLigado() == true) {
+            $this->getMsg('O carro está ligado');  
+        } else {
+            $this->getMsg('O carro não está ligado');
         }
     }
 }
